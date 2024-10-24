@@ -1,0 +1,112 @@
+---
+interface Review {
+    name: string;
+    text: string;
+    date: string;
+}
+
+const reviews: Review[] = [
+    {
+        name: "Sarah Johnson",
+        text: "Lee was an amazing instructor! His patience and clear explanations helped me pass first time. Couldn't recommend enough!",
+        date: "March 2024"
+    },
+    {
+        name: "James Wilson",
+        text: "Catherine's modern teaching approach made learning to drive enjoyable. Her tips for eco-friendly driving were especially helpful.",
+        date: "February 2024"
+    },
+    {
+        name: "Emma Thompson",
+        text: "As a nervous learner, I couldn't have asked for a better instructor than Lee. His calm demeanor made all the difference.",
+        date: "March 2024"
+    },
+    {
+        name: "Michael Brown",
+        text: "Catherine is fantastic! Her structured approach to lessons really helped me progress quickly. Passed with only 2 minors!",
+        date: "January 2024"
+    },
+    {
+        name: "Lucy Davies",
+        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
+        date: "February 2024"
+    }
+];
+---
+
+<div class="py-24 bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-white">What Our Students Say</h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-200 mx-auto"></div>
+        </div>
+        <div class="relative">
+            <div class="review-scroll-container overflow-hidden">
+                <div class="review-scroll-content flex animate-scroll">
+                    {reviews.map((review) => (
+                            <div class="review-card flex-none w-full sm:w-[400px] p-4">
+                                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl h-full border border-white/10">
+                                    <div class="flex items-center mb-4">
+                                        <div class="text-yellow-300 text-xl">★★★★★</div>
+                                    </div>
+                                    <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
+                                    <div class="mt-auto">
+                                        <p class="font-display font-semibold text-white">{review.name}</p>
+                                        <p class="text-sm text-blue-200">{review.date}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    ))}
+                    {/* Duplicate reviews for seamless scrolling */}
+                    {reviews.map((review) => (
+                            <div class="review-card flex-none w-full sm:w-[400px] p-4">
+                                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl h-full border border-white/10">
+                                    <div class="flex items-center mb-4">
+                                        <div class="text-yellow-300 text-xl">★★★★★</div>
+                                    </div>
+                                    <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
+                                    <div class="mt-auto">
+                                        <p class="font-display font-semibold text-white">{review.name}</p>
+                                        <p class="text-sm text-blue-200">{review.date}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .review-scroll-container {
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .review-scroll-content {
+        gap: 1rem;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+
+    .animate-scroll {
+        animation: scroll 40s linear infinite;
+    }
+
+    .review-scroll-content:hover {
+        animation-play-state: paused;
+    }
+
+    @media (max-width: 640px) {
+        .review-scroll-content {
+            gap: 0.5rem;
+        }
+    }
+</style>
