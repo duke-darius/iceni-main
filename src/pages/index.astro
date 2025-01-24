@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import InstructorCard from '../components/InstructorCard.astro';
 import ReviewCarousel from '../components/ReviewCarousel.astro';
+import ServiceOffered from "../components/ServiceOffered.astro";
 ---
 
 <Layout title="Iceni Driving School - Professional Driving Instruction in Norfolk">
@@ -17,12 +18,6 @@ import ReviewCarousel from '../components/ReviewCarousel.astro';
 				<div class="absolute inset-0 bg-gradient-to-br from-blue-900/95 via-blue-900/85 to-blue-800/80"></div>
 			</div>
 			<div class="relative max-w-6xl mx-auto text-center px-6 pt-24">
-				<div class="inline-block mb-6">
-					<div class="flex items-center gap-2 text-blue-200 bg-white/10 rounded-full py-2 px-4 backdrop-blur-sm mb-8">
-						<span class="text-xl">🎯</span>
-						<span class="text-sm font-medium">97% First-Time Pass Rate</span>
-					</div>
-				</div>
 				<h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
 					Your Journey to<br/>
 					<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-100">
@@ -51,26 +46,36 @@ import ReviewCarousel from '../components/ReviewCarousel.astro';
 				<div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto"></div>
 			</div>
 			<div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
-				<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">
-					<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🎯</div>
-					<h3 class="text-xl font-display font-bold mb-3">High Pass Rate</h3>
-					<p class="text-gray-600">Our students consistently achieve above-average pass rates thanks to our structured learning approach</p>
-				</div>
-				<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">
-					<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🚗</div>
-					<h3 class="text-xl font-display font-bold mb-3">Modern Vehicles</h3>
-					<p class="text-gray-600">Learn in our fleet of latest-model cars equipped with advanced safety features</p>
-				</div>
-				<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">
-					<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">📅</div>
-					<h3 class="text-xl font-display font-bold mb-3">Flexible Scheduling</h3>
-					<p class="text-gray-600">Book lessons that fit your schedule with our convenient online booking system</p>
-				</div>
+				<ServiceOffered name="Free Mock Tests" image="🧪" desc="Mock tests available for free for all Iceni Driving School students"/>
+				<ServiceOffered name="Student Portal" image="💻" desc="We provide a comprehensive student portal allowing you to track progress and view relevant information"/>
+				<ServiceOffered name="Same Eco Friendly Cars" image="🍃" desc="Both instructors drive the same environmentally friendly vehicles"/>
+
+				<ServiceOffered name="Easy Booking" image="🗓️" desc="Book your theory / driving test in your car with your instructor"/>
+				<ServiceOffered name="Interactive Tools" image="⚙️" desc="We use the latest and greatest interactive tools in the car to aid your learning journey"/>
+				<ServiceOffered name="Free Mock Tests" image="🗺️" desc="We can arrange a central point to pick you up if you live further away"/>
+				<!--<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">-->
+				<!--	<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🎯</div>-->
+				<!--	<h3 class="text-xl font-display font-bold mb-3">High Pass Rate</h3>-->
+				<!--	<p class="text-gray-600">Our students consistently achieve above-average pass rates thanks to our structured learning approach</p>-->
+				<!--</div>-->
+				<!--<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">-->
+				<!--	<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">🚗</div>-->
+				<!--	<h3 class="text-xl font-display font-bold mb-3">Modern Vehicles</h3>-->
+				<!--	<p class="text-gray-600">Learn in our fleet of latest-model cars equipped with advanced safety features</p>-->
+				<!--</div>-->
+				<!--<div class="group bg-white rounded-2xl p-8 shadow-xl shadow-blue-100 hover:shadow-2xl hover:shadow-blue-100 transition-all duration-300">-->
+				<!--	<div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform">📅</div>-->
+				<!--	<h3 class="text-xl font-display font-bold mb-3">Flexible Scheduling</h3>-->
+				<!--	<p class="text-gray-600">Book lessons that fit your schedule with our convenient online booking system</p>-->
+				<!--</div>-->
 			</div>
 		</section>
 
+		<!-- Reviews Section -->
+		<ReviewCarousel />
+
 		<!-- Instructors Section -->
-		<section id="instructors" class="py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+		<section id="instructors" class="py-24 bg-gradient-to-b from-gray-50 to-blue-100">
 			<div class="max-w-6xl mx-auto px-6">
 				<div class="text-center mb-16">
 					<h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Meet Our Instructors</h2>
@@ -110,8 +115,35 @@ I have the experience and the knowledge to get the end result, you, so desire...
 			</div>
 		</section>
 
-		<!-- Reviews Section -->
-		<ReviewCarousel />
+
+		<!-- Instructors Section -->
+		<section id="iceni-history" class="py-24 bg-gradient-to-b from-blue-100 to-grey-50">
+			<div class="max-w-6xl mx-auto px-6">
+				<div class="">
+					<div class="-mx-4 flex flex-wrap">
+						<div class="w-full px-2 lg:w-7/12">
+							<div class="hero-content">
+								<h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Who were the Iceni?</h2>
+								<p class="mb-8 max-w-[500px] text-base text-body-color">
+									The Iceni were an ancient Celtic tribe in Eastern Britain, during the Iron Age and early Roman era. They were based in East Anglia now modern-day Norfolk and ruled by Queen Boudica. Their capital was Caister-St-Edmund.<br><br>Boudica rose to power after her husband, King of the Iceni tribe, died and handed their lands and power to the romans. Boudica rebelled, bringing the tribes warriors and conquered the local Roman settlement of Camulodunum now known as Colchester.
+								</p>
+							</div>
+						</div>
+						<div class="hidden px-4 lg:block lg:w-1/12">
+
+						</div>
+						<div class="w-full px-4 lg:w-4/12">
+							<div class="lg:ml-auto lg:text-right">
+								<div class="relative z-10 inline-block pt-11 lg:pt-0">
+									<img src="/boudica.jpg" alt="hero" class="max-w-full lg:ml-auto  max-h-80"/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</section>
 
 		<!-- Contact Section -->
 		<section id="contact" class="py-24 max-w-6xl mx-auto px-6">

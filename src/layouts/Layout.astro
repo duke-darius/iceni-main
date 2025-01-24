@@ -23,21 +23,36 @@ const { title } = Astro.props;
 <nav class="fixed w-full z-50 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center py-4 px-6">
         <a href="/" class="text-2xl font-display font-bold mb-4 sm:mb-0 tracking-tight">
-            Iceni Driving School
+            <img src="/iceni_master.svg" style="width: 16rem;">
         </a>
         <div class="flex space-x-8">
             <a href="#about" class="nav-link">About</a>
+            <a href="#services" class="nav-link">Services</a>
             <a href="#instructors" class="nav-link">Instructors</a>
-            <a href="#contact" class="nav-link">Contact</a>
+            <a href="#areas" class="nav-link max-lg:hidden">Areas Covered</a>
+            <a href="#reviews" class="nav-link max-lg:hidden">Reviews</a>
+        </div>
+
+    </div>
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center py-4 px-6">
+        <div class="text-2xl font-display font-bold mb-4 sm:mb-0 tracking-tight">
+
+        </div>
+        <div class="flex space-x-8">
+            <a href="#contact" class="inline-flex items-center justify-center bg-white text-blue-900 px-4 py-3 rounded-full font-semibold hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg">
+                Book Now!
+            </a>
+            <a href="https://pupil.icenidrivingschool.co.uk" class="inline-flex items-center justify-center px-4 py-3 rounded-full font-semibold border border-white/30 hover:bg-white/10 transition-all backdrop-blur-sm">
+                Pupil Portal
+            </a>
         </div>
     </div>
 </nav>
 <slot />
 <footer class="bg-gradient-to-br from-gray-900 to-blue-900 text-white py-12">
     <div class="max-w-6xl mx-auto text-center px-6">
-        <div class="mb-8">
-            <h3 class="font-display text-2xl mb-2">Iceni Driving School</h3>
-            <p class="text-blue-200">Your journey to driving excellence starts here</p>
+        <div class="mb-8 text-center flex justify-center flex-col">
+            <img src="/iceni_master_large.svg" alt="logo">
         </div>
         <div class="border-t border-white/10 pt-8">
             <p class="text-sm text-blue-200">&copy; {new Date().getFullYear()} Iceni Driving School. All rights reserved.</p>
@@ -56,6 +71,26 @@ const { title } = Astro.props;
         background: white;
         scroll-behavior: smooth;
         scroll-padding-top: 80px;
+    }
+
+    body{
+        overflow-x: hidden;
+    }
+    body:before {
+        content: "";
+        position: fixed;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        z-index: -1;
+        background-image: url(/favicon_tiled.svg);
+        background-repeat: space;
+        background-size: 80px;
+        background-position: right;
+        transform: rotate(-13deg);
+        opacity: .05;
+
     }
     .font-primary {
         font-family: 'Poppins', system-ui, sans-serif;
