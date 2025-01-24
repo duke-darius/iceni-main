@@ -221,6 +221,7 @@ I have the experience and the knowledge to get the end result, you, so desire...
 
 
 		const el = document.getElementById("submit-button");
+		el.remove();
 		fetch("https://api.icenidrivingschool.co.uk/email/website", {
 			method: "POST",
 			body: JSON.stringify({
@@ -231,10 +232,8 @@ I have the experience and the knowledge to get the end result, you, so desire...
 				message: message
 			})
 		}).then(res => {
-			el.remove();
 			document.getElementById("success-message").classList.remove("hidden");
 		}).catch(err => {
-			el.remove();
 			document.getElementById("failure-message").classList.remove("hidden");
 		})
 	};
