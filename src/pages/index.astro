@@ -150,31 +150,88 @@ I have the experience and the knowledge to get the end result, you, so desire...
 			<div class="text-center mb-16">
 				<h2 class="font-display text-3xl sm:text-4xl font-bold mb-4">Start Your Journey</h2>
 				<div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-blue-400 mx-auto"></div>
+
 			</div>
-			<div class="bg-gradient-to-br from-blue-50 to-white rounded-2xl shadow-2xl shadow-blue-100/50 p-8 sm:p-12 max-w-3xl mx-auto">
-				<div class="space-y-8">
-					<div class="text-center">
-						<p class="text-xl font-display mb-3">Ready to begin?</p>
-						<p class="text-gray-600">Contact us to book your first lesson or discuss your requirements</p>
-					</div>
-					<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-						<a href="tel:01603123456" class="flex items-center justify-center gap-4 p-6 rounded-xl bg-white shadow-lg shadow-blue-100 hover:shadow-xl transition-all transform hover:scale-105">
-							<span class="text-2xl">📞</span>
-							<div>
-								<p class="text-sm text-gray-600">Call us at</p>
-								<p class="font-display font-bold text-blue-900">01603 123 456</p>
-							</div>
-						</a>
-						<a href="mailto:info@icenidrivingschool.co.uk" class="flex items-center justify-center gap-4 p-6 rounded-xl bg-white shadow-lg shadow-blue-100 hover:shadow-xl transition-all transform hover:scale-105">
-							<span class="text-2xl">📧</span>
-							<div>
-								<p class="text-sm text-gray-600">Email us at</p>
-								<p class="font-display font-bold text-blue-900 text-sm">info@icenidrivingschool.co.uk</p>
-							</div>
-						</a>
+			<p>Use the form below to get in touch with one of our instructors</p>
+			<div class="relative rounded-lg bg-white p-8 shadow-lg sm:p-12" data-dashlane-rid="2230ea2d17a9690a" data-dashlane-classification="contact">
+
+				<div class="mb-6">
+					<span>
+						Your name
+					</span>
+					<input id="input-name" placeholder="Your Name" class="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none" type="text" value=""/>
+				</div>
+				<div class="mb-6">
+					<span>
+						Your email
+					</span>
+					<input id="input-email" placeholder="Your Email" class="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none" type="email" value=""/>
+				</div>
+				<div class="mb-6">
+					<span>
+						Mobile number
+					</span>
+					<input id="input-phone" placeholder="Your Phone" class="border-[f0f0f0] w-full rounded border py-3 px-[14px] text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none" type="text" value=""/>
+				</div>
+				<div class="mb-6">
+					<span>
+						Preferred tutor
+					</span>
+					<br>
+					<input id="tutor-c" class="mr-4" type="radio" value="Catherine" checked="" name="tutor"/>
+					<label for="tutor-c">
+						Catherine
+					</label>
+					<br>
+					<input id="tutor-l" class="mr-4" type="radio" value="Lee" name="tutor">
+					<label for="tutor-l">
+						Lee
+					</label>
+				</div>
+				<div class="mb-6">
+					<textarea id="input-message" rows="6" placeholder="Your Message" class="border-[f0f0f0] w-full resize-none rounded border py-3 px-[14px] text-base text-body-color outline-none focus:border-primary focus-visible:shadow-none"></textarea>
+				</div>
+				<div>
+					<button id="submit-button" type="submit" class="w-full rounded border border-primary bg-gradient-to-br from-blue-900 to-blue-800 p-3 text-white transition hover:bg-opacity-90" onclick="sendForm()">
+						Send Message
+					</button>
+
+
+					<div>
+						<p id="success-message" class="text-green-500 hidden">Your request has been sent successfully, we'll be in contact shortly</p>
+						<p id="failure-message" class="text-amber-950 hidden">Your request has failed to send, please call us on the mobile numbers on the side"</p>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
 </Layout>
+
+<script>
+	window.sendForm = () => {
+		const name = document.getElementById("input-name").value;
+		const email = document.getElementById("input-email").value;
+		const mobile = document.getElementById("input-phone").value;
+		const tutor = document.getElementById("tutor-c").checked ? "Catherine" : "Lee";
+		const message = document.getElementById("input-message").value;
+
+
+		const el = document.getElementById("submit-button");
+		fetch("https://api.icenidrivingschool.co.uk/email/website", {
+			method: "POST",
+			body: JSON.stringify({
+				name: name,
+				email: email,
+				mobile: mobile,
+				tutor: tutor,
+				message: message
+			})
+		}).then(res => {
+			el.remove();
+			document.getElementById("success-message").classList.remove("hidden");
+		}).catch(err => {
+			el.remove();
+			document.getElementById("failure-message").classList.remove("hidden");
+		})
+	};
+</script>
