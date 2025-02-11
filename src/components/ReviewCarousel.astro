@@ -31,128 +31,66 @@ const reviews: Review[] = [
         text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
         date: "February 2024"
     },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    }
 ];
 ---
 
-<div id="reviews" class="revcont py-24 bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
-    <div class="max-w-6xl mx-auto px-6">
+
+<div class="flex flex-col text-center py-24 bg-gradient-to-br from-blue-900 to-blue-800 overflow-hidden">
+    <div class="container mx-auto">
         <div class="text-center mb-16">
-            <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4 text-white">What Our Students Say</h2>
-            <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-200 mx-auto"></div>
+            <h2 class="font-semibold text-3xl text-white">Testimonials</h2>
+            <div class="mx-auto w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-200"></div>
         </div>
-        <div class="relative">
-            <div class="review-scroll-container overflow-hidden">
-                <div class="review-scroll-content flex animate-scroll">
-                    {reviews.map((review) => (
-                            <div class="review-card flex-none w-full sm:w-[400px] p-4">
-                                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl h-full border border-white/10">
-                                    <div class="flex items-center mb-4">
-                                        <div class="text-yellow-300 text-xl">★★★★★</div>
-                                    </div>
-                                    <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
-                                    <div class="mt-auto">
-                                        <p class="font-display font-semibold text-white">{review.name}</p>
-                                        <p class="text-sm text-blue-200">{review.date}</p>
-                                    </div>
-                                </div>
-                            </div>
-                    ))}
-                    {/* Duplicate reviews for seamless scrolling */}
-                    {reviews.map((review) => (
-                            <div class="review-card flex-none w-full sm:w-[400px] p-4">
-                                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl h-full border border-white/10">
-                                    <div class="flex items-center mb-4">
-                                        <div class="text-yellow-300 text-xl">★★★★★</div>
-                                    </div>
-                                    <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
-                                    <div class="mt-auto">
-                                        <p class="font-display font-semibold text-white">{review.name}</p>
-                                        <p class="text-sm text-blue-200">{review.date}</p>
-                                    </div>
-                                </div>
-                            </div>
-                    ))}
+
+        <div class="flex flex-wrap " id="review-list">
+            {reviews.map((review) => (
+                <div class="my-1 px-1 w-full">
+                    <div class="review-card flex flex-col p-4 text-center border border-white rounded-2xl backdrop-filter backdrop-blur-sm bg-white/10">
+                        <div class="text-yellow-300 text-xl">★★★★★</div>
+                        <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
+                        <div class="mt-auto">
+                            <p class="font-semibold text-white">{review.name}</p>
+                            <p class="text-sm text-blue-200">{review.date}</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            ))}
         </div>
     </div>
 </div>
+<script>
+    $('#review-list').slick({
+        centerMode: true,
+        centerPadding: '60px',
+        slidesToShow: 3,
+        autoplay: true,
+        arrows: false,
+        autoplaySpeed: 2000,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    centerMode: true,
+                    centerPadding: '40px',
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });
 
+</script>
 <style>
-    .review-scroll-container {
-        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    }
-
-    .review-scroll-content {
-        gap: 1rem;
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
-        95% {
-            transform: translateX(-50%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-
-    .animate-scroll {
-        animation: scroll 40s linear infinite;
-    }
-
-    .review-scroll-content:hover {
-        animation-play-state: paused;
-    }
-
-    @media (max-width: 640px) {
-        .review-scroll-content {
-            gap: 0.5rem;
-        }
-    }
-
-    .revcont:before {
-        content: "";
-        z-index: -1;
-        background-image: url(/favicon_tiled.svg);
-        filter: hue-rotate(120deg);
-        background-repeat: space;
-        background-size: 80px;
-        background-position: right;
-        transform: rotate(-56deg);
-        opacity: .05;
-
+    .review-card {
+        min-height: 200px;
     }
 </style>

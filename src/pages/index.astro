@@ -267,15 +267,24 @@ I have the experience and the knowledge to get the end result, you, so desire...
 					Would you like to join Iceni Driving School as a fully qualified instructor?
 				</span>
 			</div>
-			<div class="grid grid-cols-1 sm:grid-cols-3 gap-8  max-w-6xl mx-auto px-6">
+			<div class="grid grid-cols-1 sm:grid-cols-4 gap-8  max-w-6xl mx-auto px-6">
 				<ul class="list-none italic font-bold">
 					<li>Great franchise fee!</li>
 				</ul>
 				<ul class="list-none italic font-bold">
+					<li>Totally flexible planning!</li>
+					<span class="text-xs opacity-60">You have full control of your diary</span>
+				</ul>
+				<ul class="list-none italic font-bold">
 					<li>No charge to find pupils!</li>
 				</ul>
-				<ul class="list-none italic <font-></font->bold">
-					<li>Custom Online Portal diary included</li>
+				<ul class="list-none italic font-bold">
+					<li>Custom Online Portal diary included!</li>
+				</ul>
+			</div>
+			<div class="grid grid-cols-1 sm:grid-cols-1 gap-8 mt-4 max-w-6xl mx-auto px-6">
+				<ul class="list-none italic font-bold font-size-lg" style="font-size: x-large">
+					<li>No tie in contract!</li>
 				</ul>
 			</div>
 			<div class=" max-w-6xl mx-auto px-6 py-6">
@@ -298,6 +307,10 @@ I have the experience and the knowledge to get the end result, you, so desire...
 		el.remove();
 		fetch("https://api.icenidrivingschool.co.uk/email/website", {
 			method: "POST",
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
 			body: JSON.stringify({
 				name: name,
 				email: email,
