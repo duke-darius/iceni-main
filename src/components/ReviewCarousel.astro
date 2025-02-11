@@ -1,37 +1,17 @@
 ---
+import {crawlGraph} from "astro/dist/vite-plugin-astro-server/vite";
 interface Review {
     name: string;
     text: string;
-    date: string;
+    tutor: string;
 }
+const response = await fetch('https://api.icenidrivingschool.co.uk/api/pupil/website/reviews');
 
-const reviews: Review[] = [
-    {
-        name: "Sarah Johnson",
-        text: "Lee was an amazing instructor! His patience and clear explanations helped me pass first time. Couldn't recommend enough!",
-        date: "March 2024"
-    },
-    {
-        name: "James Wilson",
-        text: "Catherine's modern teaching approach made learning to drive enjoyable. Her tips for eco-friendly driving were especially helpful.",
-        date: "February 2024"
-    },
-    {
-        name: "Emma Thompson",
-        text: "As a nervous learner, I couldn't have asked for a better instructor than Lee. His calm demeanor made all the difference.",
-        date: "March 2024"
-    },
-    {
-        name: "Michael Brown",
-        text: "Catherine is fantastic! Her structured approach to lessons really helped me progress quickly. Passed with only 2 minors!",
-        date: "January 2024"
-    },
-    {
-        name: "Lucy Davies",
-        text: "The best driving school in Norfolk! Professional, reliable, and genuinely care about their students' progress.",
-        date: "February 2024"
-    },
-];
+const data = await response.json();
+const reviews: Review[] = data.map(x=> {
+    return {name: x.pupil, text: x.review, tutor: x.tutor}
+});
+
 ---
 
 
@@ -40,9 +20,10 @@ const reviews: Review[] = [
         <div class="text-center mb-16">
             <h2 class="font-semibold text-3xl text-white">Testimonials</h2>
             <div class="mx-auto w-24 h-1 bg-gradient-to-r from-blue-400 to-blue-200"></div>
+            <p class="text-white text-opacity-80 my-2">Check out our Five Star Reviews</p>
         </div>
 
-        <div class="flex flex-wrap " id="review-list">
+        <div class="flex flex-wrap" id="review-list">
             {reviews.map((review) => (
                 <div class="my-1 px-1 w-full">
                     <div class="review-card flex flex-col p-4 text-center border border-white rounded-2xl backdrop-filter backdrop-blur-sm bg-white/10">
@@ -50,7 +31,7 @@ const reviews: Review[] = [
                         <p class="text-blue-100 mb-6 leading-relaxed">"{review.text}"</p>
                         <div class="mt-auto">
                             <p class="font-semibold text-white">{review.name}</p>
-                            <p class="text-sm text-blue-200">{review.date}</p>
+                            <p class="text-sm text-blue-200">{review.tutor}</p>
                         </div>
                     </div>
                 </div>
