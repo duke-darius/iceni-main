@@ -29,16 +29,16 @@ const { title } = Astro.props;
     <title>{title}</title>
 </head>
 <body class="font-primary">
-<nav class="fixed w-full z-50 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
+<nav class="w-full z-50 bg-gradient-to-r from-blue-900 to-blue-800 text-white">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center py-4 px-6">
         <a href="/" class="text-2xl font-display font-bold mb-4 sm:mb-0 tracking-tight">
             <img src="/iceni_master.svg" style="width: 16rem;">
         </a>
-        <div class="flex space-x-8">
-            <a href="#services" class="nav-link">About</a>
-            <a href="#instructors" class="nav-link">Instructors</a>
-            <a href="#areas" class="nav-link max-lg:hidden">Areas Covered</a>
-            <a href="#reviews" class="nav-link max-lg:hidden">Reviews</a>
+        <div class="grid grid-cols-4 max-lg:grid-cols-2 gap-4 sm:gap-x-8">
+            <a href="#services" class="nav-link text-center">About</a>
+            <a href="#instructors" class="nav-link text-center">Instructors</a>
+            <a href="#areas" class="nav-link text-center">Areas Covered</a>
+            <a href="#reviews" class="nav-link text-center">Reviews</a>
         </div>
 
     </div>
